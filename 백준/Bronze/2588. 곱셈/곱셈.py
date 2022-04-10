@@ -1,0 +1,10 @@
+import sys
+a = int(sys.stdin.readline())
+b = int(sys.stdin.readline())
+n = a * (b % 10)
+i = a * (b % 100 // 10)
+k = a * (b // 100)
+print(n)
+print(i)
+print(k)
+print(n + (i * 10) + (k * 100))
