@@ -1,19 +1,16 @@
 import sys
 
 n = int(sys.stdin.readline())
-result = None
+result = n
 count = 0
 
-if n < 10:
-    n *= 10
-first = n // 10
-second = n % 10
-
-while n != result:
-    sum = first + second
-    result = (second * 10) + (sum % 10)
+while True:
     first = result // 10
     second = result % 10
+    num = (first + second) % 10
+    result = (second * 10) + num
     count += 1
+    if(result == n):
+        break
 
 print(count)
