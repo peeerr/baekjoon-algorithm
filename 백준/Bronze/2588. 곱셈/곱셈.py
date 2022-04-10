@@ -1,10 +1,7 @@
 import sys
 a = int(sys.stdin.readline())
-b = int(sys.stdin.readline())
-n = a * (b % 10)
-i = a * (b % 100 // 10)
-k = a * (b // 100)
-print(n)
-print(i)
-print(k)
-print(n + (i * 10) + (k * 100))
+b = sys.stdin.readline().strip()
+
+for i in range(len(b)-1, -1, -1):
+    print(a * int(b[i]))
+print(a * int(b))
