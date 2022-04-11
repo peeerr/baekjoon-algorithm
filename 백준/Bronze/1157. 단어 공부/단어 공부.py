@@ -1,25 +1,13 @@
 import sys
 
-s = sys.stdin.readline().strip().lower()
-rm = set(s)
-rs = []
-dic = {}
+s = sys.stdin.readline().strip().upper()
+lst = list(set(s))
 
-for ch in rm:
-    dic[ch] = s.count(ch)
-    rs.append(s.count(ch))
+cnt = []
+for i in lst:
+    cnt.append(s.count(i))
 
-f = 0
-temp = list(dic.values())
-temp.remove(max(dic.values()))
-for i in temp:
-    if i == max(dic.values()):
-        f = 1
-        break
-
-if f == 1:
+if cnt.count(max(cnt)) > 1:
     print('?')
 else:
-    for i in rm:
-        if s.count(i) == max(rs):
-            print(i.upper())
+    print(lst[cnt.index(max(cnt))])
