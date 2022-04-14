@@ -1,7 +1,8 @@
 import sys
 
-s = sys.stdin.readline().split()
-s[0] = "".join(reversed(s[0]))
-s[1] = "".join(reversed(s[1]))
+num1, num2 = sys.stdin.readline().split()
 
-print(max(s))
+num1 = int(num1[::-1])
+num2 = int(num2[::-1])
+
+print(max(num1, num2))
