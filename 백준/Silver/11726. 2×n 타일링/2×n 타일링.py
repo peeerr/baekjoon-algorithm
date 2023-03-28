@@ -1,11 +1,12 @@
-n = int(input())
-# memoization을 위함
-cache = [0]*1001
-# n이 1,2인 경우는 명확하니까 미리 선언해둔다.
-cache[1]=1
-cache[2]=2
-# dynamic programming
-for i in range(3,1001):
-  cache[i] = (cache[i-1]+cache[i-2])%10007
+import sys
 
-print(cache[n])
+n = int(sys.stdin.readline())
+
+d = [0] * 1001
+d[1] = 1
+d[2] = 2
+
+for i in range(3, n + 1):
+    d[i] = d[i - 1] + d[i - 2]
+
+print(d[n] % 10007)
