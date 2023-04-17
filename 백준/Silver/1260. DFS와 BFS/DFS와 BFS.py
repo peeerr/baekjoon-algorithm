@@ -28,7 +28,6 @@ visited = [False] * (n + 1)
 
 for i in g:
     graph[i[0]].append(i[1])
-for i in g:
     graph[i[1]].append(i[0])
 
 dfs(v, graph, visited)
