@@ -1,0 +1,35 @@
+import sys, heapq
+
+MAX_INT = sys.maxsize
+
+
+n, m = map(int, input().split())
+start = int(input())
+graph = [[] for _ in range(n + 1)]
+
+for _ in range(m):
+    u, v, w = map(int, input().split())
+    graph[u].append((v, w))
+
+dist = [MAX_INT for _ in range(n + 1)]
+dist[start] = 0
+pq = [(0, start)]
+
+while pq:
+    min_dist, min_idx = heapq.heappop(pq)
+
+    if dist[min_idx] != min_dist:
+        continue
+
+    for u, w in graph[min_idx]:
+        new_dist = min_dist + w
+
+        if new_dist < dist[u]:
+            dist[u] = new_dist
+            heapq.heappush(pq, (new_dist, u))
+
+for i in range(1, n + 1):
+    if dist[i] == MAX_INT:
+        print('INF')
+    else:
+        print(dist[i])
