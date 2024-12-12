@@ -5,29 +5,19 @@ MAX_INT = sys.maxsize
 
 
 def find_closest_num(k):
-    # 배열을 정렬
-    arr.sort()
-    left, right = 0, len(arr) - 1
-    closest_sum = float('inf')  # 가장 가까운 합
-    n1, n2 = 0, 0
+    closest, n1, n2 = MAX_INT, 0, 0
 
+    left, right = 0, n - 1
     while left < right:
-        current_sum = arr[left] + arr[right]
+        if abs(closest - k) > abs(arr[left] + arr[right] - k):
+            closest, n1, n2 = arr[left] + arr[right], arr[left], arr[right]
 
-        # 현재 합이 k에 더 가까운지 확인
-        if abs(k - current_sum) < abs(k - closest_sum):
-            closest_sum = current_sum
-            n1, n2 = arr[left], arr[right]
-
-        # 포인터 이동
-        if current_sum < k:
-            left += 1
-        elif current_sum > k:
+        if arr[left] + arr[right] > k:
             right -= 1
-        else:  # 정확히 k에 도달하면 바로 반환
-            return current_sum, arr[left], arr[right]
+        else:
+            left += 1
 
-    return closest_sum, n1, n2
+    return closest, n1, n2
 
 
 def parametric_search():
