@@ -4,7 +4,10 @@ MAX_INT = sys.maxsize
 
 
 def is_possible(time):
-    return sum(time // t for t in times) >= m
+    sum_val = 0
+    for t in times:
+        sum_val += time // t
+    return sum_val >= m
 
 
 def parametric_search():
@@ -24,6 +27,5 @@ def parametric_search():
 
 n, m = map(int, input().split())
 times = [int(input()) for _ in range(n)]
-min_time = min(times)
 
 print(parametric_search())
