@@ -5,26 +5,24 @@ input = sys.stdin.readline
 
 n = int(input())
 grid = [list(map(int, input().split())) for _ in range(n)]
-temp = [[0 for _ in range(n)] for _ in range(n)]
 visited = [[False for _ in range(n)] for _ in range(n)]
 
 
 def init():
     for i in range(n):
         for j in range(n):
-            temp[i][j] = grid[i][j]
             visited[i][j] = False
 
 
 def submerge(height):
     for i in range(n):
         for j in range(n):
-            if temp[i][j] <= height:
-                temp[i][j] = 0
+            if grid[i][j] <= height:
+                grid[i][j] = 0
 
 
 def can_go(x, y):
-    return 0 <= x < n and 0 <= y < n and not visited[x][y] and temp[x][y]
+    return 0 <= x < n and 0 <= y < n and not visited[x][y] and grid[x][y]
 
 
 def dfs(x, y):
@@ -41,7 +39,7 @@ def find_cnt():
     cnt = 0
     for i in range(n):
         for j in range(n):
-            if not visited[i][j] and temp[i][j]:
+            if not visited[i][j] and grid[i][j]:
                 visited[i][j] = True
                 dfs(i, j)
                 cnt += 1
