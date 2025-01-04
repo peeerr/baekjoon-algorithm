@@ -16,15 +16,15 @@ def judge(x1, y1, x2, y2):
     return True
 
 
-def backtrack(x1, y1, n):
-    if judge(x1, y1, x1 + n - 1, y1 + n - 1):
+def simulate(x, y, n):
+    if judge(x, y, x + n - 1, y + n - 1):
         return
 
     n = n // 2
-    backtrack(x1, y1, n)  # 좌상
-    backtrack(x1, y1 + n, n)  # 우상
-    backtrack(x1 + n, y1, n)  # 좌하
-    backtrack(x1 + n, y1 + n, n)  # 우하
+    simulate(x, y, n)  # 좌상
+    simulate(x, y + n, n)  # 우상
+    simulate(x + n, y, n)  # 좌하
+    simulate(x + n, y + n, n)  # 우하
 
 
 n = int(input())
@@ -33,7 +33,7 @@ grid = [list(map(int, input().split())) for _ in range(n)]
 white = 0
 blue = 0
 
-backtrack(0, 0, n)
+simulate(0, 0, n)
 
 print(white)
 print(blue)
